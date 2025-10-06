@@ -11,12 +11,12 @@ interface CartItem {
   quantity: number;
 }
 
-const API_BASE_URL = 'https://techstore-backend-2-uybj.onrender.com/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE ?? 'http://localhost:3001/api';
 
 export const api = {
   getProducts: async (): Promise<Product[]> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/products`);
+  const response = await fetch(`${API_BASE_URL}/products`);
       const data = await response.json();
       return data.data;
     } catch (error) {
@@ -27,7 +27,7 @@ export const api = {
   
   checkout: async (items: CartItem[]): Promise<{ success: boolean; message: string }> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/checkout`, {
+  const response = await fetch(`${API_BASE_URL}/checkout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,6 +1,5 @@
 import request from 'supertest';
 import { app } from '../src/server';
-import { products } from '../src/data/products';
 
 describe('E-Commerce API Tests', () => {
   

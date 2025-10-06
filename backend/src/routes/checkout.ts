@@ -1,8 +1,11 @@
 import { Router, Request, Response } from 'express';
-import { products } from '../data/products';
 import { CheckoutRequest } from '../models/types';
+import path from 'path';
+import fs from 'fs';
 
 const router = Router();
+
+const productsFilePath = path.join(__dirname, '../data/products.json');
 
 router.post('/', (req: Request<{}, {}, CheckoutRequest>, res: Response) => {
   const { items } = req.body;
@@ -15,15 +18,18 @@ router.post('/', (req: Request<{}, {}, CheckoutRequest>, res: Response) => {
   }
 
   try {
+    const productsData = fs.readFileSync(productsFilePath, 'utf-8');
+    const products = JSON.parse(productsData);
+
     let totalAmount = 0;
     const orderDetails = items.map(item => {
-      const product = products.find(p => p.id === item.id);
+      const product = products.find((p: any) => p.id === item.id);
       if (!product) {
         throw new Error(`Product with id ${item.id} not found`);
       }
       const itemTotal = product.price * item.quantity;
       totalAmount += itemTotal;
-      
+
       return {
         productId: item.id,
         productName: product.name,
