@@ -5,6 +5,13 @@ Users can browse products, add them to a cart, and checkout. Cart state persists
 
 ---
 
+## GitHub Repository
+
+You can find the full source code and project repository at:  
+https://github.com/yourusername/techstore
+
+---
+
 ## Table of Contents
 - [Project Goal](#project-goal)
 - [Core Features](#core-features)
@@ -73,3 +80,60 @@ npm install
 cd ../frontend
 npm install
 ```
+
+---
+
+## Running the Application
+
+### Backend
+```bash
+cd backend
+npm run dev
+```
+Runs the backend server with hot reload on port 3000 by default.
+
+### Frontend
+```bash
+cd frontend
+npm run dev
+```
+Runs the frontend development server with hot reload on port 5173 by default.
+
+---
+
+## Running Tests
+
+### Backend Tests
+```bash
+cd backend
+npm test
+```
+Runs Jest tests for backend API endpoints including `/products` and `/checkout`.
+
+### Frontend Tests
+Currently, no frontend tests are included.
+
+---
+
+## Design Choices
+
+- The backend uses hardcoded product data for simplicity and demonstration purposes.
+- Cart state is managed on the client side and persisted in `localStorage` to maintain state across sessions.
+- The checkout endpoint logs orders but does not process payments or persist orders.
+- The frontend uses React with TailwindCSS for styling and Lucide React Icons for UI icons.
+- The backend is built with Express and TypeScript, with Jest and Supertest for testing.
+- The project is structured to separate frontend and backend concerns clearly.
+
+---
+
+## Screenshots
+
+![Screenshot 1](https://drive.google.com/uc?export=view&id=1u_-mVHQoGWFuhVdC5oL1DLZyfxCpLzfY)
+
+![Screenshot 2](https://drive.google.com/uc?export=view&id=1r4OUAWCLRI6oMnJevKQGketH1TZMxoYj)
+
+---
+
+## License
+
+This project is licensed under the MIT License.
